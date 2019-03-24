@@ -32,10 +32,7 @@ export class TelegramBot extends BaseBot<ITelegram> {
   }
 
   dbInit = async () => {
-    const intervalId = get(
-      this.bot,
-      'context.db.intervalId'
-    ) as ITelegramContext['db']['intervalId']
+    const intervalId = get(this.bot, 'context.db.intervalId') as ITelegramContext['db']['intervalId']
     if (intervalId) {
       clearInterval(intervalId)
     }
