@@ -1,7 +1,19 @@
-import Telegraf, { ContextMessageUpdate, Telegram } from 'telegraf'
+import Telegraf, {
+  ContextMessageUpdate,
+  TelegrafOptions,
+  Middleware,
+} from 'telegraf'
 
-export interface ITelegrafBot extends Telegraf<ContextMessageUpdate> {
+export interface ITelegram extends Telegraf<ITelegramContext> {
+  new (token: string, options?: TelegrafOptions)
+  log(): Middleware<ContextMessageUpdate>
   launch(): Promise<void>
 }
 
-export interface ITelegramContext extends ContextMessageUpdate {}
+export interface ITelegramContext extends ContextMessageUpdate {
+  db: {
+    markdown: string
+    counter: number
+    intervalId?: NodeJS.Timeout
+  }
+}

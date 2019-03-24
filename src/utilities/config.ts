@@ -6,4 +6,6 @@ dotenvSafe.config({
   allowEmptyValues: true,
 })
 
-export const get = (name: string): string => process.env[name]
+export class Config {
+  static get = (name: string): string => process.env[name]
+}
